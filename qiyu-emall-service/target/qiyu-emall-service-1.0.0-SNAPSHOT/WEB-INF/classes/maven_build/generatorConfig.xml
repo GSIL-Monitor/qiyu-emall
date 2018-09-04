@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+    <properties resource="${mybatis.generator.dbConfigFile}"/>
+
+    <context id="com.qiyu" targetRuntime="MyBatis3">
+<!--         <plugin type="com.qiyu.framework.mybatis.generator.EntityCommentPlugin"></plugin> -->
+        <!-- 		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>   -->
+        <!--         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin> -->
+        <!-- 		<plugin type="com.qiyu.framework.mybatis.plugins.OraclePaginationPlugin"/> -->
+        <!-- 		<plugin type="com.qiyu.framework.mybatis.plugins.EntityExtraMethodPlugin"/> -->
+
+        <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接信息 -->
+        <jdbcConnection driverClass="${lightning_mall.jdbc.driver}" connectionURL="${lightning_mall.jdbc.url}" userId="${lightning_mall.jdbc.username}" password="${lightning_mall.jdbc.password}"/>
+        <!-- 配置model生成目录和其它参数 -->
+        <javaModelGenerator targetPackage="${mybatis.generator.package.entity.path}" targetProject="${mybatis.generator.javaFileDir}">
+            <!-- 			<property name="rootClass" value="com.qiyu.merchant.biz.domain.BaseEntity"/> -->
+        </javaModelGenerator>
+        <!-- 配置mapper生成目录和其它参数 -->
+        <sqlMapGenerator targetPackage="${mybatis.generator.package.mapper.path}" targetProject="${mybatis.generator.resourcesFileDir}"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${mybatis.generator.package.mapper.path}" targetProject="${mybatis.generator.javaFileDir}">
+            <!-- 			<property name="rootInterface" value="com.qiyu.merchant.biz.mapper.BaseMapper"/> -->
+        </javaClientGenerator>
+
+		<table tableName="ry_mall_merchant_user" domainObjectName="RyMallMerchantUser"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+    </context>
+</generatorConfiguration>
