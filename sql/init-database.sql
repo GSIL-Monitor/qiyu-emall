@@ -1,11 +1,7 @@
 CREATE DATABASE qiyu_emall;
 use qiyu_emall;
 
-drop table if exists qy_printer_device;
-drop table if exists qy_printer_info;
-drop table if exists qy_merchant;
-drop table if exists qy_merchant_user;
-drop table if exists qy_store;
+
 drop table if exists qy_product;
 drop table if exists qy_product_category;
 drop table if exists qy_product_specification;
@@ -19,7 +15,7 @@ drop table if exists qy_user;
 drop table if exists qy_user_address;
 drop table if EXISTS qy_area;
 drop table if EXISTS qy_banner;
-
+drop table if EXISTS qy_shopcart;
 
 -- banner数据表
 CREATE TABLE `qy_banner` (
@@ -67,7 +63,7 @@ CREATE TABLE `qy_payment` (
   `update_by` varchar(30) DEFAULT '' COMMENT '修改人',
   `remark` varchar(100) DEFAULT '' COMMENT '备注描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品订单表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品流水表';
 
 
 CREATE TABLE `qy_order` (
@@ -137,9 +133,7 @@ CREATE TABLE `qy_order_product` (
   `product_name` varchar(30) DEFAULT '' COMMENT '商品名称',
   `spec_id` int(11) DEFAULT 0 COMMENT '规格id',
   `spec_name` varchar(50) DEFAULT '' COMMENT '规格名称',
-  `picture` varchar(100) DEFAULT '' COMMENT '商品图片',
-  `product_count` int(11) DEFAULT 0 COMMENT '商品数',
-  `product_price` decimal(20,2) DEFAULT 0.00 COMMENT '商品总价',
+  `product_picture` varchar(100) DEFAULT '' COMMENT '商品图片',
   `create_at` datetime NOT NULL COMMENT '创建时间',
   `update_at` datetime DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(30) DEFAULT '' COMMENT '创建人',
@@ -148,19 +142,20 @@ CREATE TABLE `qy_order_product` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单商品表';
 
+
 CREATE TABLE `qy_shopcart` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `user_id` int(11) DEFAULT 0 COMMENT '用户id',
   `product_id` int(11) DEFAULT 0 COMMENT '商品id',
   `spec_id` int(11) DEFAULT 0 COMMENT '规格id',
-  
+  `spec_count` int(11) DEFAULT 0 COMMENT '规格数量',
   `create_at` datetime NOT NULL COMMENT '创建时间',
   `update_at` datetime DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(30) DEFAULT '' COMMENT '创建人',
   `update_by` varchar(30) DEFAULT '' COMMENT '修改人',
   `remark` varchar(100) DEFAULT '' COMMENT '备注描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单日志表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='购物车列表';
 
 
 CREATE TABLE `qy_product` (
@@ -223,8 +218,7 @@ CREATE TABLE `qy_product_picture` (
 CREATE TABLE `qy_product_spec_stock` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `product_id` int(11) DEFAULT 0 COMMENT '商品id',
-  `spec_id` varchar(50) DEFAULT 0 COMMENT '规格id',
-  `spec_name` varchar(50) DEFAULT '' COMMENT '规格名称',
+  `spec_code` varchar(200) DEFAULT '' COMMENT '规格编码',
   `stock` int(11) DEFAULT 0 COMMENT '库存数',
   `init_stock` int(11) DEFAULT 0 COMMENT '每日补货初始库存',
   `original_price` decimal(20,2) DEFAULT '0.00' COMMENT '商品原价',
