@@ -2,6 +2,7 @@ package com.qiyu.emall.redis;
 
 import com.alibaba.fastjson.JSON;
 
+import com.qiyu.emall.redis.RedisDataSource;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

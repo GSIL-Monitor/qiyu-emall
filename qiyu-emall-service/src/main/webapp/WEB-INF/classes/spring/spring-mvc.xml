@@ -12,8 +12,8 @@
 
     <context:component-scan base-package="com.qiyu.emall" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
     </context:component-scan>
 
     <mvc:annotation-driven>
@@ -31,7 +31,7 @@
                         <value>application/*+json;charset=UTF-8</value>
                     </list>
                 </property>
-                <!--<property name="objectMapper" ref="jsonObjectMapper"/>-->
+                <property name="objectMapper" ref="jsonObjectMapper"/>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
@@ -45,7 +45,7 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-     <!--<bean id="jsonObjectMapper" class="com.qiyu.core.framework.spring.web.JsonObjectMapper"/>-->
+     <bean id="jsonObjectMapper" class="com.qiyu.emall.common.core.configer.JsonObjectMapper"/>
 
     <!-- Default ViewResolver -->
     <bean id="ViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

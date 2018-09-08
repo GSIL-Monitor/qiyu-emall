@@ -1,5 +1,6 @@
 package com.qiyu.emall.common.core.dao;
 
+
 import com.qiyu.emall.common.core.entity.BaseEntity;
 
 /**

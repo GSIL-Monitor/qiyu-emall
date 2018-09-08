@@ -1,9 +1,10 @@
 package com.qiyu.emall.common.core.utils;
 
 import com.qiyu.emall.common.core.constants.BusinessExceptionEnum;
-import com.qiyu.emall.common.core.constants.ConstantEnum;
 import com.qiyu.emall.common.core.entity.FTPHelper;
 import com.qiyu.emall.common.core.exception.BusinessException;
+import com.qiyu.emall.common.core.utils.FtpConfig;
+import com.qiyu.emall.common.core.utils.StringUtils;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 import org.slf4j.Logger;
@@ -11,8 +12,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import org.apache.commons.net.ftp.FTPClient;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 
 public class FtpUtil {
 

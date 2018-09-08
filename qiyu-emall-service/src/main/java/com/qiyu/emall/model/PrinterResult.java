@@ -1,5 +1,6 @@
 package com.qiyu.emall.model;
 
+import com.qiyu.emall.model.BaseResult;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

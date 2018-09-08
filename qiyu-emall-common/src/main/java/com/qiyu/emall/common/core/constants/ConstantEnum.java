@@ -251,6 +251,11 @@ public enum ConstantEnum {
 
     RECON_REDIS_PARAM_ERROR("1130001", "无效的参数"),
     RECON_REDIS_EXCEPTION("1130002", "操作redis异常"),
+
+    IMAGE_UPLOAD_EMPTY_ERROR("1130003", "上传文件为空"),
+    IMAGE_UPLOAD_SIZE_ERROR("1130004", "文件大小超过了最大限制！"),
+    IMAGE_UPLOAD_TYPE_ERROR("1130005", "文件类型有误"),
+    IMAGE_UPLOAD_ERROR("1130006", "上传文件异常"),
     ;
 
     private Object code;

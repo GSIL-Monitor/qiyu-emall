@@ -1,4 +1,4 @@
-/*
+package com.qiyu.emall.common.core.dao.impl;/*
 package com.qiyu.emall.common.core.dao.impl;
 
 import BaseMapper;
