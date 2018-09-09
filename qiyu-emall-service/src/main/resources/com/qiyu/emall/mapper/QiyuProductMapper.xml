@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiyu.emall.mapper.QiyuProductMapper">
+
+  <resultMap id="BaseResultMap" type="com.qiyu.emall.entity.QiyuProduct">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_bar" jdbcType="VARCHAR" property="productBar" />
+    <result column="is_recommend" jdbcType="TINYINT" property="isRecommend" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="sort" jdbcType="TINYINT" property="sort" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="pv_num" jdbcType="INTEGER" property="pvNum" />
+    <result column="fav_num" jdbcType="INTEGER" property="favNum" />
+    <result column="comment_num" jdbcType="INTEGER" property="commentNum" />
+    <result column="original_price" jdbcType="DECIMAL" property="originalPrice" />
+    <result column="current_price" jdbcType="DECIMAL" property="currentPrice" />
+    <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap_extends" type="com.qiyu.emall.entity.QiyuProduct" extends="BaseResultMap">
+      <collection property="pritureUrlList" select="com.qiyu.emall.mapper.QiyuProductPictureMapper.selectList" column="product_id"></collection>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, product_name, product_bar, is_recommend, status, category_id, sort, description, 
+    picture, stock, pv_num, fav_num, comment_num, original_price, current_price, create_at, 
+    update_at, create_by, update_by, remark
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap_extends">
+    select 
+    <include refid="Base_Column_List" />
+    from qy_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from qy_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProduct">
+    insert into qy_product (id, product_name, product_bar, 
+      is_recommend, status, category_id, 
+      sort, description, picture, 
+      stock, pv_num, fav_num, 
+      comment_num, original_price, current_price, 
+      create_at, update_at, create_by, 
+      update_by, remark)
+    values (#{id,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{productBar,jdbcType=VARCHAR}, 
+      #{isRecommend,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{categoryId,jdbcType=INTEGER}, 
+      #{sort,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
+      #{stock,jdbcType=INTEGER}, #{pvNum,jdbcType=INTEGER}, #{favNum,jdbcType=INTEGER}, 
+      #{commentNum,jdbcType=INTEGER}, #{originalPrice,jdbcType=DECIMAL}, #{currentPrice,jdbcType=DECIMAL}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qiyu.emall.entity.QiyuProduct">
+    insert into qy_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productBar != null">
+        product_bar,
+      </if>
+      <if test="isRecommend != null">
+        is_recommend,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="pvNum != null">
+        pv_num,
+      </if>
+      <if test="favNum != null">
+        fav_num,
+      </if>
+      <if test="commentNum != null">
+        comment_num,
+      </if>
+      <if test="originalPrice != null">
+        original_price,
+      </if>
+      <if test="currentPrice != null">
+        current_price,
+      </if>
+      <if test="createAt != null">
+        create_at,
+      </if>
+      <if test="updateAt != null">
+        update_at,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productBar != null">
+        #{productBar,jdbcType=VARCHAR},
+      </if>
+      <if test="isRecommend != null">
+        #{isRecommend,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="pvNum != null">
+        #{pvNum,jdbcType=INTEGER},
+      </if>
+      <if test="favNum != null">
+        #{favNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentNum != null">
+        #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="originalPrice != null">
+        #{originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="currentPrice != null">
+        #{currentPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.emall.entity.QiyuProduct">
+    update qy_product
+    <set>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productBar != null">
+        product_bar = #{productBar,jdbcType=VARCHAR},
+      </if>
+      <if test="isRecommend != null">
+        is_recommend = #{isRecommend,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="pvNum != null">
+        pv_num = #{pvNum,jdbcType=INTEGER},
+      </if>
+      <if test="favNum != null">
+        fav_num = #{favNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentNum != null">
+        comment_num = #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="originalPrice != null">
+        original_price = #{originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="currentPrice != null">
+        current_price = #{currentPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="createAt != null">
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qiyu.emall.entity.QiyuProduct">
+    update qy_product
+    set product_name = #{productName,jdbcType=VARCHAR},
+      product_bar = #{productBar,jdbcType=VARCHAR},
+      is_recommend = #{isRecommend,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      pv_num = #{pvNum,jdbcType=INTEGER},
+      fav_num = #{favNum,jdbcType=INTEGER},
+      comment_num = #{commentNum,jdbcType=INTEGER},
+      original_price = #{originalPrice,jdbcType=DECIMAL},
+      current_price = #{currentPrice,jdbcType=DECIMAL},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

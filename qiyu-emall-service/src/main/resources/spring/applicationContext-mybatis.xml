@@ -47,7 +47,7 @@
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.qiyu.lightning.mall.service.mapper" />
+		<property name="basePackage" value="com.qiyu.emall.mapper" />
 	</bean>
 
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">

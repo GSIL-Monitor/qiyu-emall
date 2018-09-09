@@ -256,6 +256,9 @@ public enum ConstantEnum {
     IMAGE_UPLOAD_SIZE_ERROR("1130004", "文件大小超过了最大限制！"),
     IMAGE_UPLOAD_TYPE_ERROR("1130005", "文件类型有误"),
     IMAGE_UPLOAD_ERROR("1130006", "上传文件异常"),
+
+    PRODUCT_OPERATOR_ERROR("1140001", "商品操作异常"),
+    PRODUCT_SEARCH_ERROR("1140002", "商品查询异常"),
     ;
 
     private Object code;

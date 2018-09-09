@@ -1,44 +1,47 @@
-package com.qiyu.emall.common.core.entity;
+package com.qiyu.emall.entity;
 
-import com.google.gson.Gson;
-
-import java.io.Serializable;
 import java.util.Date;
 
-import lombok.Data;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+public class QiyuProductPicture {
+    private Integer id;
 
-/**
- *
- */
-public class BaseEntity implements Serializable {
-    private static final long serialVersionUID = -4732651363238889870L;
+    private Integer productId;
 
-    /**
-     * 创建时间
-     */
+    private String picture;
+
     private Date createAt;
 
-    /**
-     * 编辑时间
-     */
     private Date updateAt;
 
-    /**
-     * 创建人
-     */
     private String createBy;
 
-    /**
-     * 修改人
-     */
     private String updateBy;
 
-    /**
-     * 备注描述
-     */
     private String remark;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
     public Date getCreateAt() {
         return createAt;
@@ -79,14 +82,4 @@ public class BaseEntity implements Serializable {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-
-    public String toJson() {
-        return new Gson().toJson(this);
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.DEFAULT_STYLE);
-    }
-
 }

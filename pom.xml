@@ -29,10 +29,10 @@
         </mybatis.generator.configFile>
         <mybatis.generator.dbConfigFile>maven_build/01_dev.properties
         </mybatis.generator.dbConfigFile>
-        <mybatis.generator.package.path>com.qiyu.settle</mybatis.generator.package.path>
-        <mybatis.generator.package.entity.path>com.qiyu.lightning.mall.service.entity
+        <mybatis.generator.package.path>com.qiyu.emall</mybatis.generator.package.path>
+        <mybatis.generator.package.entity.path>com.qiyu.emall.entity
         </mybatis.generator.package.entity.path>
-        <mybatis.generator.package.mapper.path>com.qiyu.lightning.mall.service.mapper
+        <mybatis.generator.package.mapper.path>com.qiyu.emall.mapper
         </mybatis.generator.package.mapper.path>
         <mybatis.generator.javaFileDir>${basedir}/src/main/java</mybatis.generator.javaFileDir>
         <mybatis.generator.resourcesFileDir>${basedir}/src/main/resources

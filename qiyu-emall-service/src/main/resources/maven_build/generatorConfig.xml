@@ -16,7 +16,7 @@
         </commentGenerator>
 
         <!-- 数据库连接信息 -->
-        <jdbcConnection driverClass="${lightning_mall.jdbc.driver}" connectionURL="${lightning_mall.jdbc.url}" userId="${lightning_mall.jdbc.username}" password="${lightning_mall.jdbc.password}"/>
+        <jdbcConnection driverClass="${qiyu_emall.jdbc.driver}" connectionURL="${qiyu_emall.jdbc.url}" userId="${qiyu_emall.jdbc.username}" password="${qiyu_emall.jdbc.password}"/>
         <!-- 配置model生成目录和其它参数 -->
         <javaModelGenerator targetPackage="${mybatis.generator.package.entity.path}" targetProject="${mybatis.generator.javaFileDir}">
             <!-- 			<property name="rootClass" value="com.qiyu.merchant.biz.domain.BaseEntity"/> -->
@@ -27,7 +27,7 @@
             <!-- 			<property name="rootInterface" value="com.qiyu.merchant.biz.mapper.BaseMapper"/> -->
         </javaClientGenerator>
 
-		<table tableName="ry_mall_merchant_user" domainObjectName="RyMallMerchantUser"
+		<table tableName="qy_product_picture" domainObjectName="QiyuProductPicture"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
