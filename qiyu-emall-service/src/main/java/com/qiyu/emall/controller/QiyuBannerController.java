@@ -30,7 +30,7 @@ public class QiyuBannerController extends BaseController{
     @RequestMapping(value = "/list" , method = RequestMethod.GET)
     @ResponseBody
     public ResponseData detail(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        logger.info("查询banner列表=");
+        logger.info("查询banner列表");
         List<QiyuBannerVo> bannerVoList = null;
         try{
             bannerVoList = qiyuBannerService.selectList();
