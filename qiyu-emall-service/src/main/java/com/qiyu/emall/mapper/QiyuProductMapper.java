@@ -2,6 +2,8 @@ package com.qiyu.emall.mapper;
 
 import com.qiyu.emall.entity.QiyuProduct;
 
+import java.util.List;
+
 public interface QiyuProductMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface QiyuProductMapper {
     int updateByPrimaryKeySelective(QiyuProduct record);
 
     int updateByPrimaryKey(QiyuProduct record);
+
+    List<QiyuProduct> selectList();
 }

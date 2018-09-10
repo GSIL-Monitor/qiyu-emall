@@ -1,6 +1,8 @@
 package com.qiyu.emall.dao;
 
+import com.qiyu.emall.entity.QiyuContent;
 import com.qiyu.emall.entity.QiyuProduct;
+import com.qiyu.emall.mapper.QiyuContentMapper;
 import com.qiyu.emall.mapper.QiyuProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,25 +10,23 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class QiyuProductDao {
+public class QiyuContentDao {
 
     @Autowired
-    private QiyuProductMapper qiyuProductMapper;
-
+    private QiyuContentMapper qiyuContentMapper;
     /**
      * 查询文章详情
      * @param id
      * @return
      */
-    public QiyuProduct detail(Integer id) {
-        return qiyuProductMapper.selectByPrimaryKey(id);
+    public QiyuContent detail(Integer id) {
+        return qiyuContentMapper.selectByPrimaryKey(id);
     }
-
     /**
      * 查询文章列表
      * @return
      */
-    public List<QiyuProduct> list() {
-        return qiyuProductMapper.selectList();
+    public List<QiyuContent> list() {
+        return qiyuContentMapper.selectList();
     }
 }

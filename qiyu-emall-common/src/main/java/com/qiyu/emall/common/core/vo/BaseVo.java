@@ -13,6 +13,7 @@ public class BaseVo implements Serializable {
 	private String createBy;
 	private Date updateAt;
 	private String updateBy;
+	private String remark;
 
 	public Date getCreateAt() {
 		return createAt;
@@ -44,6 +45,14 @@ public class BaseVo implements Serializable {
 
 	public void setUpdateBy(String updateBy) {
 		this.updateBy = updateBy;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	@Override

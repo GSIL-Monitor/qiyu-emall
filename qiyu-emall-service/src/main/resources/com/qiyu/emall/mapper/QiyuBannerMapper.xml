@@ -5,6 +5,7 @@
   <resultMap id="BaseResultMap" type="com.qiyu.emall.entity.QiyuBanner">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="business_id" jdbcType="INTEGER" property="businessId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="picture" jdbcType="VARCHAR" property="picture" />
     <result column="url" jdbcType="VARCHAR" property="url" />
@@ -17,7 +18,7 @@
     <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, type, name, picture, url, status, sort, create_at, update_at, create_by, update_by, 
+    id, type,business_id, name, picture, url, status, sort, create_at, update_at, create_by, update_by,
     remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -26,7 +27,7 @@
     from qy_banner
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectList" resultMap="BaseresultMap">
+  <select id="selectList" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from qy_banner where status = 0;

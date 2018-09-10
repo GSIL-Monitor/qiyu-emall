@@ -1,9 +1,11 @@
 package com.qiyu.emall.entity;
 
+import com.qiyu.emall.common.core.entity.BaseEntity;
+
 import java.math.BigDecimal;
 import java.util.List;
 
-public class QiyuProduct {
+public class QiyuProduct extends BaseEntity {
     private Integer id;
 
     private String productName;

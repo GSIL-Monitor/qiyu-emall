@@ -1,6 +1,7 @@
 package com.qiyu.emall.common.core.vo;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class QiyuProductVo extends BaseVo {
     private Integer  id;
@@ -18,6 +19,7 @@ public class QiyuProductVo extends BaseVo {
     private Integer commentNum;
     private BigDecimal originalPrice;
     private BigDecimal currentPrice;
+    private List<String> pictureUrlList;
 
     public Integer getId() {
         return id;
@@ -139,4 +141,11 @@ public class QiyuProductVo extends BaseVo {
         this.currentPrice = currentPrice;
     }
 
+    public List<String> getPictureUrlList() {
+        return pictureUrlList;
+    }
+
+    public void setPictureUrlList(List<String> pictureUrlList) {
+        this.pictureUrlList = pictureUrlList;
+    }
 }

@@ -2,22 +2,16 @@ package com.qiyu.emall.entity;
 
 import com.qiyu.emall.common.core.entity.BaseEntity;
 
-public class QiyuBanner extends BaseEntity {
+public class QiyuContent extends BaseEntity {
     private Integer id;
-
-    private Integer type;
-    //业务id
-    private Integer businessId;
 
     private String name;
 
     private String picture;
 
-    private String url;
-
     private Integer status;
 
-    private Integer sort;
+    private String content;
 
     public Integer getId() {
         return id;
@@ -43,28 +37,12 @@ public class QiyuBanner extends BaseEntity {
         this.picture = picture;
     }
 
-    public String getUrl() {
-        return url;
+    public String getContent() {
+        return content;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Integer getStatus() {
@@ -73,13 +51,5 @@ public class QiyuBanner extends BaseEntity {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Integer getBusinessId() {
-        return businessId;
-    }
-
-    public void setBusinessId(Integer businessId) {
-        this.businessId = businessId;
     }
 }

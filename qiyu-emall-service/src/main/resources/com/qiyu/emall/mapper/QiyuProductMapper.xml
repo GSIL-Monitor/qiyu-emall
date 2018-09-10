@@ -41,6 +41,14 @@
     from qy_product
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectList" resultMap="BaseResultMap_extends">
+    select
+    <include refid="Base_Column_List" />
+    from qy_product
+    order by sort desc;
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from qy_product
     where id = #{id,jdbcType=INTEGER}

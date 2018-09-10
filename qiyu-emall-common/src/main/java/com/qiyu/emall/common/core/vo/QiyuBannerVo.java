@@ -72,4 +72,12 @@ public class QiyuBannerVo extends BaseVo {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    public Integer getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
+    }
 }
