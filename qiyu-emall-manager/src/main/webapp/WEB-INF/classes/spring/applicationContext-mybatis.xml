@@ -21,13 +21,6 @@
 		<property name="maxPoolSize" value="50" />
 		<property name="minPoolSize" value="10" />
 		<property name="maxIdleTime" value="1800" />
-		<!--JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements
-       属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。
-       如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 0-->
-		<property name="maxStatements" value="0"/>
-		<!--连接池用完时客户调用getConnection()后等待获取连接的时间，单位：毫秒。超时后会抛出-->
-		<!--SQLEXCEPTION，如果设置0，则无限等待。Default:0-->
-		<property name="checkoutTimeout" value="100"/>
 	</bean>
 
 
@@ -36,7 +29,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath*:com/qiyu/emall/mapper/*Mapper.xml</value>
+				<value>classpath*:com/qiyu/manager/emall/mapper/*Mapper.xml</value>
 			</list>
 		</property>
 		<property name="plugins">
@@ -47,7 +40,7 @@
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.qiyu.emall.mapper" />
+		<property name="basePackage" value="com.qiyu.lightning.mall.service.mapper" />
 	</bean>
 
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
