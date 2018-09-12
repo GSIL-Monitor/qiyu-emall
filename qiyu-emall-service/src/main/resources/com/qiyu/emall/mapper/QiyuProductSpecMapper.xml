@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qiyu.emall.mapper.QiyuProductSpecMapper" >
-  <resultMap id="BaseResultMap" type="com.qiyu.emall.entity.QiyuProductSpec" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
-    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
-    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
-    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, name, parent_id, create_at, update_at, create_by, update_by, remark
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from qy_product_spec
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from qy_product_spec
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProductSpec" >
-    insert into qy_product_spec (id, name, parent_id, 
+    <resultMap id="BaseResultMap" type="com.qiyu.emall.entity.QiyuProductSpec" >
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="product_id" property="productId" jdbcType="INTEGER" />
+      <result column="spec_id" property="specId" jdbcType="INTEGER" />
+      <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+      <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+      <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+      <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+      <result column="remark" property="remark" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+      id, product_id, spec_id, create_at, update_at, create_by, update_by, remark
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+      select
+      <include refid="Base_Column_List" />
+      from qy_product_spec
+      where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+      delete from qy_product_spec
+      where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByProductId" parameterType="java.lang.Integer">
+        delete from qy_product_spec
+        where product_id =#{productId}
+    </delete>
+    <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProductSpec" >
+    insert into qy_product_spec (id, product_id, spec_id, 
       create_at, update_at, create_by, 
       update_by, remark)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{specId,jdbcType=INTEGER}, 
       #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
       #{updateBy,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
@@ -38,11 +42,11 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="productId != null" >
+        product_id,
       </if>
-      <if test="parentId != null" >
-        parent_id,
+      <if test="specId != null" >
+        spec_id,
       </if>
       <if test="createAt != null" >
         create_at,
@@ -64,11 +68,11 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
       </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=INTEGER},
+      <if test="specId != null" >
+        #{specId,jdbcType=INTEGER},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=TIMESTAMP},
@@ -87,14 +91,25 @@
       </if>
     </trim>
   </insert>
+  <insert id="batchInsert" parameterType="java.util.Set">
+      insert into qy_product_spec(product_id,spec_id,create_at)
+      values
+      <foreach collection="productSpecSet" item="productSpec" separator="," index="index">
+        (
+          #{productSpec.productId},
+          #{productSpec.specId},
+          now()
+        )
+      </foreach>
+  </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.emall.entity.QiyuProductSpec" >
     update qy_product_spec
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
       </if>
-      <if test="parentId != null" >
-        parent_id = #{parentId,jdbcType=INTEGER},
+      <if test="specId != null" >
+        spec_id = #{specId,jdbcType=INTEGER},
       </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=TIMESTAMP},
@@ -116,8 +131,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qiyu.emall.entity.QiyuProductSpec" >
     update qy_product_spec
-    set name = #{name,jdbcType=VARCHAR},
-      parent_id = #{parentId,jdbcType=INTEGER},
+    set product_id = #{productId,jdbcType=INTEGER},
+      spec_id = #{specId,jdbcType=INTEGER},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP},
       create_by = #{createBy,jdbcType=VARCHAR},

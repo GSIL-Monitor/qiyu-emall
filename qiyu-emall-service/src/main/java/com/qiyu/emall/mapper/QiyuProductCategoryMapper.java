@@ -14,4 +14,6 @@ public interface QiyuProductCategoryMapper {
     int updateByPrimaryKeySelective(QiyuProductCategory record);
 
     int updateByPrimaryKey(QiyuProductCategory record);
+
+    int deleteByProductId(Integer qiyuProduct);
 }

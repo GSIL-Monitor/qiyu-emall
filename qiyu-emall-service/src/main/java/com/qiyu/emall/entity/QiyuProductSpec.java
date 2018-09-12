@@ -2,16 +2,19 @@ package com.qiyu.emall.entity;
 
 import com.qiyu.emall.common.core.entity.BaseEntity;
 
+import java.util.Objects;
 
-/**
- * 商品规格实体
- */
 public class QiyuProductSpec extends BaseEntity {
     private Integer id;
 
-    private String name;
-
-    private Integer parentId;
+    /**
+     * 商品id
+     */
+    private Integer productId;
+    /**
+     * 规格id
+     */
+    private Integer specId;
 
     public Integer getId() {
         return id;
@@ -21,20 +24,41 @@ public class QiyuProductSpec extends BaseEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public Integer getSpecId() {
+        return specId;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setSpecId(Integer specId) {
+        this.specId = specId;
     }
 
+    public QiyuProductSpec(Integer id, Integer productId, Integer specId) {
+        this.id = id;
+        this.productId = productId;
+        this.specId = specId;
+    }
+
+    public QiyuProductSpec() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        QiyuProductSpec that = (QiyuProductSpec) o;
+        return Objects.equals(specId, that.specId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(specId);
+    }
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.qiyu.emall.mapper.QiyuProductMapper">
 
   <resultMap id="BaseResultMap" type="com.qiyu.emall.entity.QiyuProduct">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="product_id" jdbcType="INTEGER" property="id" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="product_bar" jdbcType="VARCHAR" property="productBar" />
     <result column="is_recommend" jdbcType="TINYINT" property="isRecommend" />
@@ -26,11 +26,13 @@
   </resultMap>
 
   <resultMap id="BaseResultMap_extends" type="com.qiyu.emall.entity.QiyuProduct" extends="BaseResultMap">
-      <collection property="pritureUrlList" select="com.qiyu.emall.mapper.QiyuProductPictureMapper.selectList" column="product_id"></collection>
+      <collection property="pritureUrlList" select="com.qiyu.emall.mapper.QiyuProductPictureMapper.selectList" column="product_id" javaType="java.util.List"></collection>
+      <collection property="specStock" select="com.qiyu.emall.mapper.QiyuProductSpecStockMapper.selectSpecStockByProductId" column="product_id" javaType="java.util.List"></collection>
+      <collection property="spec" select="com.qiyu.emall.mapper.QiyuSpecificationMapper.selectSpecByProductId" column="product_id" javaType="java.util.List"></collection>
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, product_name, product_bar, is_recommend, status, category_id, sort, description, 
+    id product_id, product_name, product_bar, is_recommend, status, category_id, sort, description,
     picture, stock, pv_num, fav_num, comment_num, original_price, current_price, create_at, 
     update_at, create_by, update_by, remark
   </sql>
@@ -53,7 +55,7 @@
     delete from qy_product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProduct">
+  <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProduct" useGeneratedKeys="true">
     insert into qy_product (id, product_name, product_bar, 
       is_recommend, status, category_id, 
       sort, description, picture, 
@@ -69,7 +71,7 @@
       #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
       #{updateBy,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.qiyu.emall.entity.QiyuProduct">
+  <insert id="insertSelective" parameterType="com.qiyu.emall.entity.QiyuProduct" useGeneratedKeys="true">
     insert into qy_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

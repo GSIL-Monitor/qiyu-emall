@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qiyu.emall.mapper.QiyuSpecificationMapper" >
+  <resultMap id="BaseResultMap" type="com.qiyu.emall.entity.QiyuSpecification" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="spec_name" property="specName" jdbcType="VARCHAR" />
+    <result column="spec_type" property="specType" jdbcType="TINYINT" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="spec_level" property="specLevel" jdbcType="TINYINT" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, spec_name, spec_type, parent_id, spec_level, create_at, update_at, create_by, 
+    update_by, remark
+  </sql>
+
+  <sql id="Base_Column_List_Spec" >
+    s.id, s.spec_name, s.spec_type, s.parent_id, s.spec_level, s.create_at, s.update_at, s.create_by,
+    s.update_by, s.remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from qy_specification
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!--根据商品id 查询商品关联的规格数据-->
+  <select id="selectSpecByProductId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+      select <include refid="Base_Column_List_Spec" />
+      from qy_specification s left join qy_product_spec ps on s.id = ps.spec_id
+      where ps.product_id =#{productId}
+  </select>
+
+  <select id="searchSpecList" resultMap="BaseResultMap" parameterType="com.qiyu.emall.param.SpecificationSearchParam">
+      select <include refid="Base_Column_List_Spec" />
+      from qy_specification s left join qy_category_spec cs on s.id = cs.spec_id
+      <where>
+          <if test="categoryId !=null">
+              and s.category_id = #{categoryId}
+          </if>
+      </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qy_specification
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuSpecification" >
+    insert into qy_specification (id, spec_name, spec_type, 
+      parent_id, spec_level, create_at, 
+      update_at, create_by, update_by, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{specName,jdbcType=VARCHAR}, #{specType,jdbcType=TINYINT}, 
+      #{parentId,jdbcType=VARCHAR}, #{specLevel,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qiyu.emall.entity.QiyuSpecification" >
+    insert into qy_specification
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="specName != null" >
+        spec_name,
+      </if>
+      <if test="specType != null" >
+        spec_type,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="specLevel != null" >
+        spec_level,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="specName != null" >
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="specType != null" >
+        #{specType,jdbcType=TINYINT},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="specLevel != null" >
+        #{specLevel,jdbcType=TINYINT},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.emall.entity.QiyuSpecification" >
+    update qy_specification
+    <set >
+      <if test="specName != null" >
+        spec_name = #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="specType != null" >
+        spec_type = #{specType,jdbcType=TINYINT},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="specLevel != null" >
+        spec_level = #{specLevel,jdbcType=TINYINT},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qiyu.emall.entity.QiyuSpecification" >
+    update qy_specification
+    set spec_name = #{specName,jdbcType=VARCHAR},
+      spec_type = #{specType,jdbcType=TINYINT},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      spec_level = #{specLevel,jdbcType=TINYINT},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

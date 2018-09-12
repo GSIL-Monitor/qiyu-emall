@@ -4,6 +4,7 @@ import com.qiyu.emall.common.core.constants.ConstantEnum;
 import com.qiyu.emall.common.core.response.ResponseData;
 import com.qiyu.emall.common.core.vo.QiyuProductVo;
 import com.qiyu.emall.entity.QiyuProduct;
+import com.qiyu.emall.param.ProductSaveParam;
 import com.qiyu.emall.service.QiyuProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +30,7 @@ public class QiyuProductController extends BaseController{
     @RequestMapping(value = "/detail" , method = RequestMethod.GET)
     @ResponseBody
     public ResponseData detail(Integer id,HttpServletRequest request, HttpServletResponse response) throws IOException {
-        logger.info("查询商品详情id=",id);
+        logger.info("查询商品详情id={}",id);
         QiyuProductVo qiyuProductVo = null;
         try{
             qiyuProductVo = qiyuProductService.detail(id);
@@ -58,5 +59,19 @@ public class QiyuProductController extends BaseController{
             return ResponseData.failure(ConstantEnum.PRODUCT_OPERATOR_ERROR);
         }
         return ResponseData.success(qiyuProductVo);
+    }
+
+
+    @RequestMapping(value = "/save" , method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseData save(ProductSaveParam param,HttpServletRequest request, HttpServletResponse response) throws IOException {
+        logger.info("保存商品param={}",param);
+        try{
+            qiyuProductService.save(param);
+        }catch (Exception e){
+            logger.error("product save exception",e);
+            return ResponseData.failure(ConstantEnum.PRODUCT_OPERATOR_ERROR);
+        }
+        return ResponseData.success();
     }
 }

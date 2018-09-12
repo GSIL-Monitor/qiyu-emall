@@ -29,4 +29,12 @@ public class QiyuProductDao {
     public List<QiyuProduct> list() {
         return qiyuProductMapper.selectList();
     }
+
+    public int update(QiyuProduct qiyuProduct) {
+        return qiyuProductMapper.updateByPrimaryKeySelective(qiyuProduct);
+    }
+
+    public int insert(QiyuProduct qiyuProduct) {
+        return qiyuProductMapper.insertSelective(qiyuProduct);
+    }
 }

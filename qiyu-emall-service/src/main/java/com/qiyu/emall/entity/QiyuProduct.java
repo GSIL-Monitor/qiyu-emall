@@ -35,8 +35,18 @@ public class QiyuProduct extends BaseEntity {
     private BigDecimal originalPrice;
 
     private BigDecimal currentPrice;
-
+    /**
+     * 商品图片列表
+     */
     private List<String> pritureUrlList;
+    /**
+     * 商品规格库存数据
+     */
+    private QiyuProductSpecStock specStock;
+    /**
+     * 商品规格数据
+     */
+    private QiyuSpecification specification;
 
     public Integer getId() {
         return id;
@@ -164,5 +174,13 @@ public class QiyuProduct extends BaseEntity {
 
     public void setPritureUrlList(List<String> pritureUrlList) {
         this.pritureUrlList = pritureUrlList;
+    }
+
+    public QiyuProductSpecStock getSpecStock() {
+        return specStock;
+    }
+
+    public void setSpecStock(QiyuProductSpecStock specStock) {
+        this.specStock = specStock;
     }
 }

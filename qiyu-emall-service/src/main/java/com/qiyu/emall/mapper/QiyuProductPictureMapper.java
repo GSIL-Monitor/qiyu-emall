@@ -1,6 +1,9 @@
 package com.qiyu.emall.mapper;
 
 import com.qiyu.emall.entity.QiyuProductPicture;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface QiyuProductPictureMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,8 @@ public interface QiyuProductPictureMapper {
     int updateByPrimaryKeySelective(QiyuProductPicture record);
 
     int updateByPrimaryKey(QiyuProductPicture record);
+
+    int deleteByProductId(Integer productId);
+
+    int batchInsert(@Param("productPictureList") List<QiyuProductPicture> productPictureList);
 }

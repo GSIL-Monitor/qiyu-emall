@@ -25,11 +25,18 @@
     from qy_product_spec_stock
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectSpecStockByProductId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+      select <include refid="Base_Column_List" />
+      from qy_product_spec_stock where product_id =#{product_id}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from qy_product_spec_stock
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProductSpecStock" >
+    <delete id="deleteByProductId" parameterType="java.lang.Integer">
+        delete from qy_product_spec_stock where product_id =#{productId}
+    </delete>
+    <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProductSpecStock" >
     insert into qy_product_spec_stock (id, product_id, spec_code, 
       stock, init_stock, original_price, 
       current_price, create_at, update_at, 
@@ -119,6 +126,21 @@
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="java.util.List">
+      insert into qy_product_spec_stock
+      (product_id,spec_code,stock,original_price,current_price,create_at)
+      values
+      <foreach collection="specStockList" item="specStock" separator=",">
+        (
+          #{specStock.productId},
+          #{specStock.specCode},
+          #{specStock.stock},
+          #{specStock.originalPrice},
+          #{specStock.currentPrice},
+          now()
+        )
+      </foreach>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.emall.entity.QiyuProductSpecStock" >
     update qy_product_spec_stock

@@ -31,7 +31,7 @@ public class QiyuContentController extends BaseController{
     @RequestMapping(value = "/detail" , method = RequestMethod.GET)
     @ResponseBody
     public ResponseData detail(Integer id,HttpServletRequest request, HttpServletResponse response) throws IOException {
-        logger.info("查询文章详情id=",id);
+        logger.info("查询文章详情id={}",id);
         QiyuContentVo qiyuContentVo = null;
         try{
             qiyuContentVo = qiyuContentService.detail(id);
@@ -39,7 +39,7 @@ public class QiyuContentController extends BaseController{
                 return ResponseData.failure(ConstantEnum.PRODUCT_SEARCH_ERROR);
             }
         }catch (Exception e){
-            logger.error("product detail exception",e);
+            logger.error("content detail exception",e);
             return ResponseData.failure(ConstantEnum.PRODUCT_OPERATOR_ERROR);
         }
         return ResponseData.success(qiyuContentVo);
@@ -56,7 +56,7 @@ public class QiyuContentController extends BaseController{
                 return ResponseData.failure(ConstantEnum.PRODUCT_SEARCH_ERROR);
             }
         }catch (Exception e){
-            logger.error("product detail exception",e);
+            logger.error("content list exception",e);
             return ResponseData.failure(ConstantEnum.PRODUCT_OPERATOR_ERROR);
         }
         return ResponseData.success(qiyuContentVos);

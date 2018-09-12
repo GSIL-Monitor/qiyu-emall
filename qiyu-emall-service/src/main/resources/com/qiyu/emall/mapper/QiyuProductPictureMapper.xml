@@ -31,7 +31,10 @@
     delete from qy_product_picture
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProductPicture" >
+    <delete id="deleteByProductId" parameterType="java.lang.Integer">
+        delete from qy_product_picture where product_id =#{productId}
+    </delete>
+    <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuProductPicture" >
     insert into qy_product_picture (id, product_id, picture, 
       create_at, update_at, create_by, 
       update_by, remark)
@@ -93,6 +96,17 @@
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="java.util.List">
+      insert into qy_product_picture(product_id,priture,create_at)
+      values
+      <foreach collection="productPictureList" item="productPicture" index="index" separator=",">
+        (
+        #{productPicture.productId},
+        #{productPicture.picture},
+        now()
+        )
+      </foreach>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.emall.entity.QiyuProductPicture" >
     update qy_product_picture

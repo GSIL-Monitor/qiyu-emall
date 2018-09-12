@@ -1,28 +1,23 @@
 package com.qiyu.emall.entity;
 
-import com.qiyu.emall.common.core.entity.BaseEntity;
+import java.util.Date;
 
-/**
- * 商品分类实体
- */
-public class QiyuProductCategory extends BaseEntity {
+public class QiyuProductCategory {
     private Integer id;
 
-    private String categoryName;
+    private Integer categoryId;
 
-    private String categoryType;
+    private Integer productId;
 
-    private Integer parentId;
+    private Date createAt;
 
-    private Integer level;
+    private Date updateAt;
 
-    private String categoryNo;
+    private String createBy;
 
-    private String icon;
+    private String updateBy;
 
-    private Integer status;
-
-    private Integer sort;
+    private String remark;
 
     public Integer getId() {
         return id;
@@ -32,69 +27,59 @@ public class QiyuProductCategory extends BaseEntity {
         this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getCategoryType() {
-        return categoryType;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setCategoryType(String categoryType) {
-        this.categoryType = categoryType;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 
-    public Integer getLevel() {
-        return level;
+    public Date getUpdateAt() {
+        return updateAt;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
-    public String getCategoryNo() {
-        return categoryNo;
+    public String getCreateBy() {
+        return createBy;
     }
 
-    public void setCategoryNo(String categoryNo) {
-        this.categoryNo = categoryNo;
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
     }
 
-    public String getIcon() {
-        return icon;
+    public String getUpdateBy() {
+        return updateBy;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 
-    public Integer getStatus() {
-        return status;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-
 }

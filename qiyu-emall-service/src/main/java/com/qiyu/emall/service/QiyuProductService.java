@@ -1,6 +1,7 @@
 package com.qiyu.emall.service;
 
 import com.qiyu.emall.common.core.vo.QiyuProductVo;
+import com.qiyu.emall.param.ProductSaveParam;
 
 import java.util.List;
 
@@ -11,10 +12,15 @@ public interface QiyuProductService {
      * @return
      */
     QiyuProductVo detail(Integer id);
-
     /**
      * 查询商品列表
      * @return
      */
     List<QiyuProductVo> list();
+
+    /**
+     * 保存商品信息
+     * @param param
+     */
+    void save(ProductSaveParam param);
 }
