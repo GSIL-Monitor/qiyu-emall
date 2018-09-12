@@ -74,4 +74,16 @@ public class QiyuProductController extends BaseController{
         }
         return ResponseData.success();
     }
+
+    @ResponseBody
+    public ResponseData updateStatus(ProductSaveParam param,HttpServletRequest request, HttpServletResponse response) throws IOException {
+        logger.info("商品上下架param={}",param);
+        try{
+            qiyuProductService.updateStatus(param);
+        }catch (Exception e){
+            logger.error("product updateStatus exception",e);
+            return ResponseData.failure(ConstantEnum.PRODUCT_OPERATOR_ERROR);
+        }
+        return ResponseData.success();
+    }
 }

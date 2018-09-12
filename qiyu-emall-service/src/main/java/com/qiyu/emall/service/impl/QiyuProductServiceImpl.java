@@ -98,6 +98,14 @@ public class QiyuProductServiceImpl implements QiyuProductService {
 
     }
 
+    @Override
+    public void updateStatus(ProductSaveParam param) {
+        QiyuProduct product = new QiyuProduct();
+        product.setId(param.getProductId());
+        product.setStatus(param.getStatus());
+        qiyuProductDao.update(product);
+    }
+
     private void saveProductCategory(QiyuProduct qiyuProduct) {
         QiyuProductCategory productCategory = new QiyuProductCategory();
         productCategory.setProductId(qiyuProduct.getId());

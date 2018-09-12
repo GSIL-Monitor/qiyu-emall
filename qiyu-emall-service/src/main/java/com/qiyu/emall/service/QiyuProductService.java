@@ -23,4 +23,10 @@ public interface QiyuProductService {
      * @param param
      */
     void save(ProductSaveParam param);
+
+    /**
+     * 商品上下架
+     * @param param
+     */
+    void updateStatus(ProductSaveParam param);
 }
