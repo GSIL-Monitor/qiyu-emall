@@ -16,7 +16,7 @@ package com.qiyu.emall.common.core.constants;
  **/
 
 public enum ConstantEnum {
-	
+    EXC_ERROR_SYSTEM("1000", "系统异常"),
 	FIAL_USER_PARAMS_PAYMENT(1018401, "没有登录或登录信息错误"),//前台约定，没有登录统一后三位为401
 	FIAL_NO_AUTHORITY_PAYMENT(1018403, "没有访问该资源的权限"),//前台约定，没有权限统一后三位为403
 	FIAL_USER_IDENTITY(1018404, "没有获取登录用户身份信息"),
@@ -35,7 +35,6 @@ public enum ConstantEnum {
     PAYMENT_TYPE_2(2,"支付宝"),
     PAYMENT_TYPE_3(3,"现金"),
 
-    EXC_ERROR_SYSTEM("111000", "系统异常"),
     EXC_EXIST_CONFIG("111001", "配置已存在"),
     EXC_PARAM_NOT_EXIST_SHOPID("111002", "无效的店铺"),
     EXC_PARAM_NOT_EXIST_CONFIG_TYPE("111003", "无效的配置类型"),
@@ -259,6 +258,13 @@ public enum ConstantEnum {
 
     PRODUCT_OPERATOR_ERROR("1140001", "商品操作异常"),
     PRODUCT_SEARCH_ERROR("1140002", "商品查询异常"),
+
+
+    EXC_ERROR_PARAM_SYSTEM("1150000","无效的参数"),
+    EXCEPTION_USER_REGISTER("1150001", "用户注册异常"),
+    EXCEPTION_USER_IDENTITY("1150002","获取用户信息异常"),
+    EXCEPTION_OPERATOR_WEPHONE_ERROR("115003","获取用户微信授权手机号异常"),
+    EXCEPTION_OPERATOR_LOGIN_FAIL("115004","登录异常")
     ;
 
     private Object code;

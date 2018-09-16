@@ -47,6 +47,14 @@
         <property name="maxUploadSize" value="524288000" />
     </bean>
 
+    <bean id = "ryMallConfig" class ="com.qiyu.emall.unit.MallConfigUnit">
+        <property name="clientAppId" value="${client_AppId}"/>
+        <property name="clienAppSecret" value="${clien_AppSecret}"/>
+        <property name="clientMchId" value="${client_MchId}"/>
+        <property name="clientKey" value="${client_Key}"/>
+
+    </bean>
+
     <!-- SpringMVC在超出上传文件限制时,会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
     <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的,而且此时还没有进入到Controller方法中 -->
     <!-- <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
