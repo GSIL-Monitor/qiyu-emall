@@ -264,7 +264,9 @@ public enum ConstantEnum {
     EXCEPTION_USER_REGISTER("1150001", "用户注册异常"),
     EXCEPTION_USER_IDENTITY("1150002","获取用户信息异常"),
     EXCEPTION_OPERATOR_WEPHONE_ERROR("115003","获取用户微信授权手机号异常"),
-    EXCEPTION_OPERATOR_LOGIN_FAIL("115004","登录异常")
+    EXCEPTION_OPERATOR_LOGIN_FAIL("115004","登录异常"),
+    SHOPCART_SEARCH_ERROR("1160001", "购物车查询异常"),
+    SHOPCART_OPERATOR_ERROR("1160002", "购物车操作异常")
     ;
 
     private Object code;
