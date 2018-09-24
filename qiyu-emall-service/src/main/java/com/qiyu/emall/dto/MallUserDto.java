@@ -1,9 +1,5 @@
 package com.qiyu.emall.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
 import java.util.Date;
 
 /**
@@ -120,6 +116,9 @@ public class MallUserDto extends BaseMallDto{
     private String tokenId;
 
     private Integer type;//空或者0 为小程序注册 1为验券小程序注册
+
+    //0非合伙人 1：合伙人
+    private Integer isPartner;
 
 
     public static long getSerialVersionUID() {
@@ -324,5 +323,13 @@ public class MallUserDto extends BaseMallDto{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getIsPartner() {
+        return isPartner;
+    }
+
+    public void setIsPartner(Integer isPartner) {
+        this.isPartner = isPartner;
     }
 }

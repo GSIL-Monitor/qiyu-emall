@@ -27,7 +27,7 @@
             <!-- 			<property name="rootInterface" value="com.qiyu.merchant.biz.mapper.BaseMapper"/> -->
         </javaClientGenerator>
 
-		<table tableName="qy_shopcart" domainObjectName="QiyuShopCart"
+		<table tableName="qy_user_acc" domainObjectName="QiyuUserAcc"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">

@@ -266,7 +266,15 @@ public enum ConstantEnum {
     EXCEPTION_OPERATOR_WEPHONE_ERROR("115003","获取用户微信授权手机号异常"),
     EXCEPTION_OPERATOR_LOGIN_FAIL("115004","登录异常"),
     SHOPCART_SEARCH_ERROR("1160001", "购物车查询异常"),
-    SHOPCART_OPERATOR_ERROR("1160002", "购物车操作异常")
+    SHOPCART_OPERATOR_ERROR("1160002", "购物车操作异常"),
+
+    PAY_CARD_INFO_ERROR("1170000","您输入的卡号密码有误,请确认后重新输入"),
+    PAY_CARD_INVALID("1170001","当前时间不能使用储值卡"),
+    PAY_CARD_INVALID_USED("1170002","储值卡已使用,请勿重复使用"),
+    PAY_CARD_INVALID_TIMEOUT("1170003","储值卡已经失效"),
+    PAY_CARD_FIND_ACC_ERROR("1170004","未查询到用户账户信息")
+
+
     ;
 
     private Object code;

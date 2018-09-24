@@ -23,10 +23,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends BaseController {
+public class QiyuUserController extends BaseController {
 
 
-    private Logger log = LoggerFactory.getLogger(UserController.class);
+    private Logger log = LoggerFactory.getLogger(QiyuUserController.class);
 
     @Autowired
     private QiyuUserService qiyuUserService;

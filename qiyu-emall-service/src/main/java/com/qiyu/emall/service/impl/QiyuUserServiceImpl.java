@@ -8,7 +8,9 @@ import com.qiyu.emall.common.core.utils.StringUtils;
 import com.qiyu.emall.common.core.vo.UserAddressVo;
 import com.qiyu.emall.dto.*;
 import com.qiyu.emall.entity.QiyuUser;
+import com.qiyu.emall.entity.QiyuUserAcc;
 import com.qiyu.emall.entity.QyUserAddress;
+import com.qiyu.emall.mapper.QiyuUserAccMapper;
 import com.qiyu.emall.mapper.QiyuUserMapper;
 import com.qiyu.emall.mapper.QyUserAddressMapper;
 import com.qiyu.emall.redis.RedisClientTemplate;
@@ -21,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.util.*;
 
 
@@ -42,6 +45,8 @@ public class QiyuUserServiceImpl implements QiyuUserService {
     private QiyuUserMapper qiyuUserMapper;
     @Autowired
     private QyUserAddressMapper userAddressMapper;
+    @Autowired
+    private QiyuUserAccMapper accMapper;
 
 
     private static final int WECHAT_SESSION_TIMEOUT = 60 * 60 * 24 * 182;// session超时时间 182天
@@ -143,6 +148,17 @@ public class QiyuUserServiceImpl implements QiyuUserService {
                 String tokenId = uuid;
                 template.setObject(MALL_OPRATOR_INFO_KEY + tokenId, mallUser);
                 template.expire(MALL_OPRATOR_INFO_KEY + tokenId, MALL_OPRATOR_SESSION_TIMEOUT);
+
+                //开户
+                QiyuUserAcc acc = accMapper.selectByUserId(qiyuUser.getId());
+                if(acc == null){
+                    QiyuUserAcc userAcc = new QiyuUserAcc();
+                    userAcc.setUserId(qiyuUser.getId());
+                    userAcc.setBalance(BigDecimal.ZERO);
+                    userAcc.setFrozeBalance(BigDecimal.ZERO);
+                    userAcc.setCreateAt(new Date());
+                    accMapper.insert(userAcc);
+                }
                 return ResponseData.success(tokenId);
             }
 

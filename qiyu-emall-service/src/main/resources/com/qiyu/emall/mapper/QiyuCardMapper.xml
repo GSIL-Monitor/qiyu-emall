@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qiyu.emall.mapper.QiyuCardMapper" >
+  <resultMap id="BaseResultMap" type="com.qiyu.emall.entity.QiyuCard" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+    <result column="card_pwd" property="cardPwd" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="valid_begin" property="validBegin" jdbcType="TIMESTAMP" />
+    <result column="valid_end" property="validEnd" jdbcType="TIMESTAMP" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, card_no, card_pwd, amount, status, user_id, valid_begin, valid_end, create_at, 
+    update_at, create_by, update_by, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from qy_card
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qy_card
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qiyu.emall.entity.QiyuCard" >
+    insert into qy_card (id, card_no, card_pwd, 
+      amount, status, user_id, 
+      valid_begin, valid_end, create_at, 
+      update_at, create_by, update_by, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{cardNo,jdbcType=VARCHAR}, #{cardPwd,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{validBegin,jdbcType=TIMESTAMP}, #{validEnd,jdbcType=TIMESTAMP}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qiyu.emall.entity.QiyuCard" >
+    insert into qy_card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cardNo != null" >
+        card_no,
+      </if>
+      <if test="cardPwd != null" >
+        card_pwd,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="validBegin != null" >
+        valid_begin,
+      </if>
+      <if test="validEnd != null" >
+        valid_end,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPwd != null" >
+        #{cardPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="validBegin != null" >
+        #{validBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validEnd != null" >
+        #{validEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.emall.entity.QiyuCard" >
+    update qy_card
+    <set >
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPwd != null" >
+        card_pwd = #{cardPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="validBegin != null" >
+        valid_begin = #{validBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validEnd != null" >
+        valid_end = #{validEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qiyu.emall.entity.QiyuCard" >
+    update qy_card
+    set card_no = #{cardNo,jdbcType=VARCHAR},
+      card_pwd = #{cardPwd,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      status = #{status,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      valid_begin = #{validBegin,jdbcType=TIMESTAMP},
+      valid_end = #{validEnd,jdbcType=TIMESTAMP},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectByNoPwd" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from qy_card
+    where card_no = #{cardNo}
+    and card_pwd =#{cardPwd}
+  </select>
+</mapper>
