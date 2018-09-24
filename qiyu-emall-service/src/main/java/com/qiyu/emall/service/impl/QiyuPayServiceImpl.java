@@ -84,7 +84,7 @@ public class QiyuPayServiceImpl implements QiyuPayService {
 
         //修改用户账户余额
         BigDecimal balance = userAcc.getBalance();
-        userAcc.setBalance(balance.add(card.getAmount()));=
+        userAcc.setBalance(balance.add(card.getAmount()));
         userAccMapper.updateByPrimaryKey(userAcc);
 
 
