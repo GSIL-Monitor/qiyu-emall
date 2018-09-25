@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="qiyu-emall" />
+        <module name="qiyu-emall-common" />
+        <module name="qiyu-emall-manager" />
+        <module name="qiyu-emall-service" />
       </profile>
     </annotationProcessing>
   </component>
