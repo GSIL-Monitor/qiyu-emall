@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,11 +30,11 @@ public class QiyuProductController extends BaseController{
 
     @RequestMapping(value = "/detail" , method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData detail(Integer id,HttpServletRequest request, HttpServletResponse response) throws IOException {
-        logger.info("查询商品详情id={}",id);
+    public ResponseData detail(Integer productId,HttpServletRequest request, HttpServletResponse response) throws IOException {
+        logger.info("查询商品详情id={}",productId);
         QiyuProductVo qiyuProductVo = null;
         try{
-            qiyuProductVo = qiyuProductService.detail(id);
+            qiyuProductVo = qiyuProductService.detail(productId);
             if(qiyuProductVo==null){
                 return ResponseData.failure(ConstantEnum.PRODUCT_SEARCH_ERROR);
             }
@@ -48,17 +49,17 @@ public class QiyuProductController extends BaseController{
     @ResponseBody
     public ResponseData list(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info("查询商品列表");
-        QiyuProductVo qiyuProductVo = null;
+        List<QiyuProductVo> productVoList = new ArrayList<>();
         try{
-            List<QiyuProductVo> productVoList = qiyuProductService.list();
-            if(qiyuProductVo==null){
+            productVoList = qiyuProductService.list();
+            if(productVoList==null){
                 return ResponseData.failure(ConstantEnum.PRODUCT_SEARCH_ERROR);
             }
         }catch (Exception e){
             logger.error("product detail exception",e);
             return ResponseData.failure(ConstantEnum.PRODUCT_OPERATOR_ERROR);
         }
-        return ResponseData.success(qiyuProductVo);
+        return ResponseData.success(productVoList);
     }
 
 
@@ -75,6 +76,7 @@ public class QiyuProductController extends BaseController{
         return ResponseData.success();
     }
 
+    @RequestMapping(value = "/updateStatus" , method = RequestMethod.POST)
     @ResponseBody
     public ResponseData updateStatus(ProductSaveParam param,HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info("商品上下架param={}",param);

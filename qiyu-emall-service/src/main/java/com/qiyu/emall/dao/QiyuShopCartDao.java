@@ -1,11 +1,8 @@
 package com.qiyu.emall.dao;
 
-import com.qiyu.emall.entity.QiyuProduct;
 import com.qiyu.emall.entity.QiyuShopCart;
-import com.qiyu.emall.mapper.QiyuProductMapper;
 import com.qiyu.emall.mapper.QiyuShopCartMapper;
 import com.qiyu.emall.param.ShopCartSearchParam;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

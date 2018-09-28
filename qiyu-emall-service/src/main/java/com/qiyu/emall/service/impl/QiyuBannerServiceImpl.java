@@ -46,7 +46,7 @@ public class QiyuBannerServiceImpl implements QiyuBannerService {
      * @param banner
      */
     private void buildVo(QiyuBannerVo bannerVo, QiyuBanner banner) {
-        bannerVo.setId(banner.getId());
+        bannerVo.setBannerId(banner.getId());
         bannerVo.setName(banner.getName());
         bannerVo.setType(banner.getType());
         bannerVo.setBusinessId(banner.getBusinessId());

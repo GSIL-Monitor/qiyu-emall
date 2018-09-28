@@ -172,7 +172,7 @@ public class QiyuProductServiceImpl implements QiyuProductService {
     }
 
     private void buildProductVo(QiyuProductVo qiyuProductVo, QiyuProduct qiyuProduct) {
-        qiyuProductVo.setId(qiyuProduct.getId());
+        qiyuProductVo.setProductId(qiyuProduct.getId());
         qiyuProductVo.setProductName(qiyuProduct.getProductName());
         qiyuProductVo.setProductBar(qiyuProduct.getProductBar());
         qiyuProductVo.setIsRecommend(qiyuProduct.getIsRecommend());

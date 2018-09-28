@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class QiyuProductVo extends BaseVo {
-    private Integer  id;
+    private Integer  productId;
     private String productName;
     private String productBar;
     private Integer isRecommend;
@@ -21,12 +21,12 @@ public class QiyuProductVo extends BaseVo {
     private BigDecimal currentPrice;
     private List<String> pictureUrlList;
 
-    public Integer getId() {
-        return id;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {

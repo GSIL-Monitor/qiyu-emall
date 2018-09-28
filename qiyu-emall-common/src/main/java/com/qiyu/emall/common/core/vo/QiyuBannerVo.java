@@ -1,28 +1,29 @@
 package com.qiyu.emall.common.core.vo;
 
 public class QiyuBannerVo extends BaseVo {
-    private Integer id;
+    private Integer bannerId;
 
+    //业务类型 1商品,2文章
     private Integer type;
     //业务id
     private Integer businessId;
-
+    // banner名称
     private String name;
-
+    //banner图片
     private String picture;
 
     private String url;
-
+    //  banner 状态0 显示 1隐藏 2删除
     private Integer status;
-
+    // 排序,值越大越靠前
     private Integer sort;
 
-    public Integer getId() {
-        return id;
+    public Integer getBannerId() {
+        return bannerId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setBannerId(Integer bannerId) {
+        this.bannerId = bannerId;
     }
 
     public String getName() {
