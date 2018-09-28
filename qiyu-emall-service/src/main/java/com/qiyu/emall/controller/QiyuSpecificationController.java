@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/specification")
 public class QiyuSpecificationController extends BaseController{
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());

@@ -14,5 +14,28 @@ public class MallOrderParam extends BaseParam {
     //下单金额
     private BigDecimal payAmount;
 
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
+    public List<MallProductParam> getProductParams() {
+        return productParams;
+    }
+
+    public void setProductParams(List<MallProductParam> productParams) {
+        this.productParams = productParams;
+    }
+
+    public BigDecimal getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(BigDecimal payAmount) {
+        this.payAmount = payAmount;
+    }
 }
 
