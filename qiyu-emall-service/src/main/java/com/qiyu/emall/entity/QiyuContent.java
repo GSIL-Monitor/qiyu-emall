@@ -2,6 +2,8 @@ package com.qiyu.emall.entity;
 
 import com.qiyu.emall.common.core.entity.BaseEntity;
 
+import java.util.List;
+
 public class QiyuContent extends BaseEntity {
     private Integer id;
 
@@ -12,6 +14,8 @@ public class QiyuContent extends BaseEntity {
     private Integer status;
 
     private String content;
+
+    private List<String> pictureList;
 
     public Integer getId() {
         return id;
@@ -51,5 +55,13 @@ public class QiyuContent extends BaseEntity {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public List<String> getPictureList() {
+        return pictureList;
+    }
+
+    public void setPictureList(List<String> pictureList) {
+        this.pictureList = pictureList;
     }
 }

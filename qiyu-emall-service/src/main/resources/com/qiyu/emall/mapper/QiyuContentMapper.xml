@@ -15,6 +15,10 @@
   <resultMap id="ResultMapWithBLOBs" type="com.qiyu.emall.entity.QiyuContent" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+  <resultMap id="ResultMapWithBLOBs_extends" type="com.qiyu.emall.entity.QiyuContent" extends="ResultMapWithBLOBs" >
+    <collection property="pictureList" javaType="java.util.List" column="id" select="com.qiyu.emall.mapper.QiyuContentMapper.selectPictureListByContentId"></collection>
+  </resultMap>
   <sql id="Base_Column_List" >
     id, name, picture, content, status, create_at, update_at, create_by, update_by, remark
   </sql>
@@ -176,4 +180,8 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectPictureListByContentId" parameterType="java.lang.Integer" resultType="java.lang.String">
+      select picture from qy_content_picture where content_id = #{id}
+  </select>
 </mapper>

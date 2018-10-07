@@ -1,6 +1,10 @@
 package com.qiyu.emall.mapper;
 
+import com.qiyu.emall.common.core.vo.QiyuCategoryVo;
 import com.qiyu.emall.entity.QiyuCategory;
+import com.qiyu.emall.param.CategorySearchParam;
+
+import java.util.List;
 
 public interface QiyuCategoryMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +18,6 @@ public interface QiyuCategoryMapper {
     int updateByPrimaryKeySelective(QiyuCategory record);
 
     int updateByPrimaryKey(QiyuCategory record);
+
+    List<QiyuCategory> list(CategorySearchParam searchParam);
 }

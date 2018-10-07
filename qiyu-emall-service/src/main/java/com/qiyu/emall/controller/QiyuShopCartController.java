@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -74,7 +75,7 @@ public class QiyuShopCartController extends BaseController{
 
     @RequestMapping(value = "/save" , method = RequestMethod.POST)
     @ResponseBody
-    public ResponseData save(ProductSaveParam param,HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public ResponseData save(@RequestBody ProductSaveParam param, HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info("加入购物车数据param={}",param);
         try{
             qiyuShopCartService.save(param);

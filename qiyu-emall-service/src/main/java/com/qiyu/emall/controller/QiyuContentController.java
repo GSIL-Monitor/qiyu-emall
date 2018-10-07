@@ -30,11 +30,11 @@ public class QiyuContentController extends BaseController{
 
     @RequestMapping(value = "/detail" , method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData detail(Integer id,HttpServletRequest request, HttpServletResponse response) throws IOException {
-        logger.info("查询文章详情id={}",id);
+    public ResponseData detail(Integer contentId,HttpServletRequest request, HttpServletResponse response) throws IOException {
+        logger.info("查询文章详情id={}",contentId);
         QiyuContentVo qiyuContentVo = null;
         try{
-            qiyuContentVo = qiyuContentService.detail(id);
+            qiyuContentVo = qiyuContentService.detail(contentId);
             if(qiyuContentVo==null){
                 return ResponseData.failure(ConstantEnum.PRODUCT_SEARCH_ERROR);
             }

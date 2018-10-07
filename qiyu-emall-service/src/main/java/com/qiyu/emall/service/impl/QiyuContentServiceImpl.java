@@ -61,7 +61,7 @@ public class QiyuContentServiceImpl implements QiyuContentService {
     }
 
     private void buildContentVo(QiyuContentVo contentVo, QiyuContent content) {
-        contentVo.setId(content.getId());
+        contentVo.setContentId(content.getId());
         contentVo.setName(content.getName());
         contentVo.setStatus(content.getStatus());
         contentVo.setPicture(content.getPicture());
@@ -71,5 +71,8 @@ public class QiyuContentServiceImpl implements QiyuContentService {
         contentVo.setUpdateAt(content.getUpdateAt());
         contentVo.setUpdateBy(content.getUpdateBy());
         content.setRemark(content.getRemark());
+        if(CollectionUtils.isNotEmpty(content.getPictureList())){
+            contentVo.setPictureList(content.getPictureList());
+        }
     }
 }

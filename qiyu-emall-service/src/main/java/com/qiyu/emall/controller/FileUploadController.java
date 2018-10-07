@@ -49,6 +49,7 @@ public class FileUploadController extends BaseController {
 		// 这里实现文件上传操作用的是commons.io.FileUtils类,它会自动判断/upload是否存在,不存在会自动创建
 //		String realPath = request.getSession().getServletContext().getRealPath(File.separator + Constant.PicPath.rootPath + File.separator);
 		String realPath = propertyConfigurer.getProperty(Constant.IMAGE_UPLOAD_DIR).toString();
+		String imageUrl = propertyConfigurer.getProperty(Constant.IMAGE_UPLOAD_URL);
 		logger.info("realPath=" + realPath);
 		// 上传文件的原名(即上传前的文件名字)
 		String originalFilename = null;
@@ -96,6 +97,7 @@ public class FileUploadController extends BaseController {
 				}
 			}
 		}
+		imageUrl = imageUrl+newName;
 		// 此时在Windows下输出的是[D:\Develop\apache-tomcat-6.0.36\webapps\AjaxFileUpload\\upload\愤怒的小鸟.jpg]
 		// logger.info(realPath + "\\" + originalFilename);
 		// 此时在Windows下输出的是[/AjaxFileUpload/upload/愤怒的小鸟.jpg]
@@ -104,7 +106,7 @@ public class FileUploadController extends BaseController {
 		// 不推荐返回[realPath + "\\" + originalFilename]的值
 		// 因为在Windows下<img src="file:///D:/aa.jpg">能被firefox显示,而<img
 		// src="D:/aa.jpg">firefox是不认的
-		return ResponseData.success();
+		return ResponseData.success(imageUrl);
 	}
 
 	@RequestMapping(value = "/test")
