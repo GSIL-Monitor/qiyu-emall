@@ -258,7 +258,8 @@ public enum ConstantEnum {
 
     PRODUCT_OPERATOR_ERROR("1140001", "商品操作异常"),
     PRODUCT_SEARCH_ERROR("1140002", "商品查询异常"),
-
+    CATEGORY_OPERATOR_ERROR("1140003", "商品操作异常"),
+    CATEGORY_SEARCH_ERROR("1140004", "商品查询异常"),
 
     EXC_ERROR_PARAM_SYSTEM("1150000","无效的参数"),
     EXCEPTION_USER_REGISTER("1150001", "用户注册异常"),

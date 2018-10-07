@@ -25,8 +25,20 @@ public class QiyuCategoryServiceImpl implements QiyuCategoryService {
             List<QiyuCategoryVo> categoryVoList = new ArrayList<>();
             for(QiyuCategory category: categoryList){
                 QiyuCategoryVo categoryVo = new QiyuCategoryVo();
+                buildCategoryVo(categoryVo,category);
+                categoryVoList.add(categoryVo);
             }
+            return categoryVoList;
         }
         return null;
+    }
+
+    private void buildCategoryVo(QiyuCategoryVo categoryVo, QiyuCategory category) {
+        categoryVo.setCategoryId(category.getId());
+        categoryVo.setCategoryName(category.getCategoryName());
+        categoryVo.setCategoryType(category.getCategoryType());
+        categoryVo.setParentId(category.getParentId());
+        categoryVo.setLevel(category.getLevel());
+        categoryVo.setStatus(category.getStatus());
     }
 }

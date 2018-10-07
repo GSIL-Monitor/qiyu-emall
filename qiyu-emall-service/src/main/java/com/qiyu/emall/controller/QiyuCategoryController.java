@@ -40,11 +40,11 @@ public class QiyuCategoryController extends BaseController{
         try{
             qiyuCategoryVos = qiyuCategoryService.list(searchParam);
             if(qiyuCategoryVos==null){
-                return ResponseData.failure(ConstantEnum.PRODUCT_SEARCH_ERROR);
+                return ResponseData.failure(ConstantEnum.CATEGORY_SEARCH_ERROR);
             }
         }catch (Exception e){
             logger.error("category list exception",e);
-            return ResponseData.failure(ConstantEnum.PRODUCT_OPERATOR_ERROR);
+            return ResponseData.failure(ConstantEnum.CATEGORY_OPERATOR_ERROR);
         }
         return ResponseData.success(qiyuCategoryVos);
     }
